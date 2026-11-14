@@ -1,0 +1,16 @@
+{
+  "_comment": "The Workshop content policy's shared cases. Two identical copies: lloom src-tauri/src/services/workshop/policy-fixture.json (test policy_matches_the_shared_fixture) and lloom-workshop scripts/policy-fixture.json (check-packs.mjs --self-test). Change both, then both tables.",
+  "allowedTopLevel": [".claude-plugin", "skills", "agents", "commands", "output-styles", "themes", "lloom", "README.md", "LICENSE"],
+  "refusedTopLevel": ["hooks", ".mcp.json", ".lsp.json", "monitors", "workflows", "bin", "scripts", "evals", "CLAUDE.md", "package.json", "node_modules", ".git"],
+  "allowedManifestKeys": ["name", "version", "description", "author", "homepage", "repository", "license", "keywords", "displayName", "skills", "commands", "agents", "outputStyles", "themes", "experimental"],
+  "refusedManifestKeys": ["hooks", "mcpServers", "lspServers", "monitors", "workflows", "channels", "userConfig", "dependencies", "types", "icon", "somethingNew"],
+  "allowedExperimentalKeys": ["themes"],
+  "allowedEntryKeys": ["name", "source", "description", "version", "author", "category", "tags", "keywords", "displayName", "homepage", "repository", "license", "metadata", "strict", "defaultEnabled", "relevance"],
+  "allowedFileNames": ["SKILL.md", "plugin.json", "notes.txt", "config.yml", "config.yaml", "LICENSE"],
+  "refusedFileNames": ["run.sh", "index.js", "tool.py", "logo.png", "app.exe", "Makefile", "LICENSE.bin", ".DS_Store"],
+  "unsafeNames": ["has space", "café", "semi;colon", "", "quote\"d"],
+  "allowedComponentPaths": ["./skills", "./skills/", "./agents/review.md", "./commands/git", "./output-styles/terse.md", "./themes"],
+  "refusedComponentPaths": [".", "./", "skills", "../skills", "./skills/../../x", "./scripts/a.md", "/etc", "./skills\\x", "https://example.com/x.mcpb"],
+  "attentionKeys": ["allowed-tools", "allowedTools", "tools", "hooks", "permissionMode", "mcpServers"],
+  "limits": { "maxFileBytes": 262144, "maxPackBytes": 2097152, "maxEntries": 1000, "maxDepth": 8, "maxGuidanceChars": 4000 }
+}

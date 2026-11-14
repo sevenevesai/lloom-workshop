@@ -1,0 +1,46 @@
+name: check-packs
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# Read-only, no secrets: this runs on pull requests from forks.
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out the change
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      # A pull request is judged by the base branch's script, so it cannot weaken the check that
+      # judges it. Changes to the policy itself land through review of scripts/.
+      - name: Check out the base branch's script
+        if: github.event_name == 'pull_request'
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: base
+          sparse-checkout: scripts
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Self-test the policy table against the shared fixture
+        run: node scripts/check-packs.mjs --self-test
+
+      - name: Check every pack (base branch's script)
+        if: github.event_name == 'pull_request'
+        run: node base/scripts/check-packs.mjs --root .
+
+      - name: Check every pack
+        if: github.event_name != 'pull_request'
+        run: node scripts/check-packs.mjs
