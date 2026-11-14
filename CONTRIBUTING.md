@@ -38,7 +38,7 @@ adds its folder and its marketplace entry.
 
 ## Content only, and why
 
-Installing a pack is one click, and what it installs reaches every session of that account. Text
+Installing a pack is one click, and what it installs is available to every session of that account. Text
 can be read in full before it is merged; code cannot be reviewed to the same standard, and Claude
 Code runs a plugin's code as you, with your files and credentials. So for now a pack may hold:
 
@@ -101,3 +101,8 @@ Set `version` in `plugin.json` and change it with every update: Claude Code keep
 version they installed until it changes. Use `MAJOR.MINOR.PATCH`, and raise MAJOR when an update
 removes or renames something people use. If the marketplace entry also sets `version`, it must
 match `plugin.json`.
+
+## Licence
+
+This repository is under the [MIT licence](LICENSE). By opening a pull request you agree that your
+contribution is accepted under the same licence.
