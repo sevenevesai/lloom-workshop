@@ -1,0 +1,5 @@
+# The policy check and the workflow that runs it decide what every pack may contain,
+# so changes to them need the owner's review.
+/scripts/   @sevenevesai
+/.github/   @sevenevesai
+/.claude-plugin/marketplace.json   @sevenevesai
