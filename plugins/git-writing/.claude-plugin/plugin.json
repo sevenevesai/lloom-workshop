@@ -1,0 +1,10 @@
+{
+  "name": "git-writing",
+  "version": "1.0.0",
+  "description": "Skills that write pull request descriptions and release notes from git history.",
+  "author": {
+    "name": "Lloom",
+    "url": "https://lloom.app"
+  },
+  "keywords": ["git", "pull-requests", "release-notes"]
+}

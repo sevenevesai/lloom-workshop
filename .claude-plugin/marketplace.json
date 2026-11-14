@@ -1,0 +1,24 @@
+{
+  "name": "lloom-workshop",
+  "description": "Content packs for Claude Code and Lloom: skills, agents, commands, output styles and session guidance, reviewed by pull request.",
+  "owner": {
+    "name": "Lloom",
+    "url": "https://lloom.app"
+  },
+  "plugins": [
+    {
+      "name": "git-writing",
+      "source": "./plugins/git-writing",
+      "description": "Skills that write pull request descriptions and release notes from git history.",
+      "category": "productivity",
+      "tags": ["git", "pull-requests", "release-notes"]
+    },
+    {
+      "name": "working-habits",
+      "source": "./plugins/working-habits",
+      "description": "Session guidance for Lloom: handoff summaries, commit discipline and test-first bug fixes.",
+      "category": "guidance",
+      "tags": ["lloom", "session-guidance"]
+    }
+  ]
+}

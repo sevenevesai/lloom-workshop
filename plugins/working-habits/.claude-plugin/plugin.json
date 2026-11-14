@@ -1,0 +1,10 @@
+{
+  "name": "working-habits",
+  "version": "1.0.0",
+  "description": "Session guidance for Lloom: handoff summaries, commit discipline and test-first bug fixes. Adopt each one in Lloom's Session Guidance; installing injects nothing.",
+  "author": {
+    "name": "Lloom",
+    "url": "https://lloom.app"
+  },
+  "keywords": ["lloom", "session-guidance"]
+}
