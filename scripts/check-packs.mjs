@@ -373,14 +373,16 @@ function componentName(rel, last) {
   return parts.join(":");
 }
 
-function collectContents(dir, files, out) {
+// Names and checks components from the walked files only, so nothing behind a refused symlink is read.
+function collectContents(files, out) {
   const under = (folder, ext) => files.filter((f) => f.rel.startsWith(`${folder}/`) && f.rel.endsWith(ext));
-  let skillNames = [];
-  try {
-    skillNames = readdirSync(join(dir, "skills")).filter(isSafeName).sort();
-  } catch {
-    // No skills folder.
-  }
+  const skillNames = [
+    ...new Set(
+      files
+        .filter((f) => f.rel.startsWith("skills/") && f.rel.slice("skills/".length).includes("/"))
+        .map((f) => f.rel.split("/")[1]),
+    ),
+  ].sort();
   for (const name of skillNames) {
     const f = files.find((x) => x.rel === `skills/${name}/SKILL.md`);
     if (!f) {
@@ -436,7 +438,7 @@ function inspectPack(dir, expectedName) {
   walk(dir, "", 0, w, out);
   if (w.total > POLICY.maxPackBytes) out.violations.push(`the pack is over the ${POLICY.maxPackBytes / (1024 * 1024)} MB limit`);
   checkManifest(dir, expectedName, out);
-  collectContents(dir, w.files, out);
+  collectContents(w.files, out);
   return out;
 }
 
